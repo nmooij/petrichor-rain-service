@@ -1,6 +1,7 @@
 from xml.etree import ElementTree as ET
 
-import mock
+#import mock
+from mock import MagicMock
 
 from django.test.utils import setup_test_environment
 from django.test import Client, TestCase

@@ -6,9 +6,9 @@ from ..models.user import lookup_kasadaka_user_by_caller_id
 
 
 class TestKasaDakaUser:
-    caller_id = "+1234"
-    first_name = "henk"
-    last_name = "ernia"
+    caller_id = "+4321"
+    first_name = "Jane"
+    last_name = "Doe"
     
     def test_init(self):
         obj = mixer.blend('service_development.KasaDakaUser')

@@ -1,6 +1,8 @@
 from xml.etree import ElementTree as ET
 
-import mock
+#import mock
+from mock import MagicMock
+
 from django.test import Client, TestCase
 from django.urls import reverse
 from django.core.files import File
