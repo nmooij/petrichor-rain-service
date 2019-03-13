@@ -7,6 +7,9 @@ from django.utils.safestring import mark_safe
 from vsdk import settings
 from .models import *
 
+
+
+
 def format_validation_result(obj):
         """
         Creates a HTML list from all errors found in validation
@@ -173,14 +176,22 @@ class KasaDakaUserAdmin(admin.ModelAdmin):
     list_display = ('__str__','caller_id', 'service', 'language')
 
 class SpokenUserInputAdmin(admin.ModelAdmin):
-    list_display = ('__str__','category','description','audio_file_player')
+    #list_display = ('__str__','category','description','audio_file_player')
+    #list_filter = ('category',)
+    #fieldsets = [(_('General'), {'fields' : ['audio', 'audio_file_player', 'session','category','description']})]
+    #readonly_fields = ('audio','session','category', 'audio_file_player')
+    #can_delete = True
+
+    list_display = ('__str__','category','description')
     list_filter = ('category',)
-    fieldsets = [(_('General'), {'fields' : ['audio', 'audio_file_player', 'session','category','description']})]
-    readonly_fields = ('audio','session','category', 'audio_file_player') 
+    fieldsets = [(_('General'), {'fields' : ['audio', 'session','category','description']})]
+    readonly_fields = ('audio','session','category')
     can_delete = True
 
     def has_add_permission(self, request):
         return False
+
+
 
 
 
@@ -196,3 +207,4 @@ admin.site.register(VoiceLabel, VoiceLabelAdmin)
 admin.site.register(SpokenUserInput, SpokenUserInputAdmin)
 admin.site.register(UserInputCategory)
 admin.site.register(Record)
+admin.site.register(InputData)

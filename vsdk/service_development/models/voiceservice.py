@@ -34,8 +34,10 @@ class VoiceService(models.Model):
     registration = models.CharField(_('User registration'),max_length = 15, blank = False, choices = registration_choices)
     registration_language = models.BooleanField(_('Register Language preference'), help_text= _("The preferred language will be asked and stored during the user registration process"), default = True)
     registration_name = models.BooleanField(_('Register spoken name'), help_text = _("The user will be asked to speak their name as part of the user registration process"), default = False)
-
+   
     supported_languages = models.ManyToManyField(Language, blank = True,verbose_name=_('Supported languages'))
+	
+	
 
     class Meta:
         verbose_name = _('Voice Service')
@@ -79,8 +81,7 @@ class VoiceService(models.Model):
     @property
     def registration_disabled(self):
         "Returns True if user registration is disabled"
-        return self.registration == 'disabled'
-    
+        return self.registration == 'disabled'    
     
     def __str__(self):
         return _('Voice Service: %s') % self.name

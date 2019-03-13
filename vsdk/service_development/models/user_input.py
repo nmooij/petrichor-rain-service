@@ -26,6 +26,12 @@ class SpokenUserInput(models.Model):
     category = models.ForeignKey(UserInputCategory, on_delete=models.CASCADE, related_name="category", verbose_name = _('Category'))
     description = models.CharField(max_length = 1000, blank = True, null = True, verbose_name = _('Description'))
 
+class UserInput(models.Model):
+    value = models.CharField(max_length = 100, blank = True, null = True)
+    session = models.ForeignKey(CallSession, on_delete=models.CASCADE, related_name="user_session")
+    category = models.ForeignKey(UserInputCategory, on_delete=models.CASCADE, related_name="user_category", verbose_name = _('Category'))
+    description = models.CharField(max_length = 1000, blank = True, null = True, verbose_name = _('Description'))
+
 
     class Meta:
         verbose_name = _('Spoken User Input')
