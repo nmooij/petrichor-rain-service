@@ -23,6 +23,7 @@
 </grammar>
 
 <form id="input_form">
+<input name="input" beep="true" dtmfterm="true">
 <prompt>
 <audio src="{{ voice_label }}"/>
 <property name="termchar" value="#" />

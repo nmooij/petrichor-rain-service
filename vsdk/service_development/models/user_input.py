@@ -25,16 +25,19 @@ class SpokenUserInput(models.Model):
     session = models.ForeignKey(CallSession, on_delete=models.CASCADE, related_name="session")
     category = models.ForeignKey(UserInputCategory, on_delete=models.CASCADE, related_name="category", verbose_name = _('Category'))
     description = models.CharField(max_length = 1000, blank = True, null = True, verbose_name = _('Description'))
+    verbose_name = _('Spoken User Input')
 
 class UserInput(models.Model):
-    value = models.CharField(max_length = 100, blank = True, null = True)
-    session = models.ForeignKey(CallSession, on_delete=models.CASCADE, related_name="user_session")
-    category = models.ForeignKey(UserInputCategory, on_delete=models.CASCADE, related_name="user_category", verbose_name = _('Category'))
-    description = models.CharField(max_length = 1000, blank = True, null = True, verbose_name = _('Description'))
+    input_value = models.CharField(max_length = 100, blank = True, null = True, default='null')
+    session = models.ForeignKey(CallSession, on_delete=models.CASCADE)
+    category = models.ForeignKey(UserInputCategory, on_delete=models.CASCADE, verbose_name = _('Category'))
+    input_description = models.CharField(max_length = 1000, blank = True, null = True, verbose_name = _('Description'), default='null')
+    input_verbose_name = _('User Input')
 
-
-    class Meta:
-        verbose_name = _('Spoken User Input')
+   # class Meta:
+     #   verbose_name = _('Spoken User Input')
+       
+           
 
     def __str__(self):
         from django.template import defaultfilters

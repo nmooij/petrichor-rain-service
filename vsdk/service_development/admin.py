@@ -176,17 +176,19 @@ class KasaDakaUserAdmin(admin.ModelAdmin):
     list_display = ('__str__','caller_id', 'service', 'language')
 
 class SpokenUserInputAdmin(admin.ModelAdmin):
-    #list_display = ('__str__','category','description','audio_file_player')
-    #list_filter = ('category',)
-    #fieldsets = [(_('General'), {'fields' : ['audio', 'audio_file_player', 'session','category','description']})]
-    #readonly_fields = ('audio','session','category', 'audio_file_player')
-    #can_delete = True
-
     list_display = ('__str__','category','description')
     list_filter = ('category',)
     fieldsets = [(_('General'), {'fields' : ['audio', 'session','category','description']})]
     readonly_fields = ('audio','session','category')
     can_delete = True
+	
+class UserInputAdmin(admin.ModelAdmin):
+    list_display = ('__str__','category','input_description')
+    list_filter = ('category',)
+    fieldsets = [(_('General'), {'fields' : ['session','category','input_description']})]
+    readonly_fields = ('input_value','session','category')
+    can_delete = True
+
 
     def has_add_permission(self, request):
         return False
@@ -208,3 +210,5 @@ admin.site.register(SpokenUserInput, SpokenUserInputAdmin)
 admin.site.register(UserInputCategory)
 admin.site.register(Record)
 admin.site.register(InputData)
+admin.site.register(UserInput,UserInputAdmin)
+
