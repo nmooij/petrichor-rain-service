@@ -169,7 +169,8 @@ except KeyError:
     SFTP_USER = ""
     HEROKU = False
     SFTP_HOST = ""
-    SFTP_PORT = ""
+    #SFTP_PORT = ""
+    SFTP_PORT = "5000"
 
 if HEROKU:
     SFTP_STORAGE_HOST = SFTP_HOST
