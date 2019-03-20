@@ -33,15 +33,16 @@ SECRET_KEY = 'tk2(l(00&kfe7j97j$dvgz&b6r!kk_zbse1(9w*eoc$bcwu773'
 ########
 
 
-#DEBUG = True
+DEBUG = True
 
-DEBUG = False
+#DEBUG = False
 
 
 
 
 
 ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['petrichor-rain-system.herokuapp.com']
 
 
 # Application definition
@@ -250,4 +251,8 @@ LOGGING = {
         },
     }
 }
+
+if 'DATABASE_URL' in os.environ:
+    import dj_database_url
+    DATABASES = {'default': dj_database_url.config()}
 
