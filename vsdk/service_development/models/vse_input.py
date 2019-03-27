@@ -90,7 +90,7 @@ class InputData(VoiceServiceElement):
 
     def validator(self):
         errors = []
-        errors.extend(super(Input, self).validator())
+        errors.extend(super(InputData, self).validator())
         if not self._redirect:
             errors.append(ugettext('Input does not have a redirect element') % self.name)
         return errors
