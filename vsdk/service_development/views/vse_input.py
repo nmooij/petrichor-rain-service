@@ -12,7 +12,7 @@ def input_generate_context(input_element, session):
 
 
     ask_input_label = input_element.voice.label.ask_input_label_url(language)
-    ask_confirmation_voice_label = record_element.ask_confirmation_voice_label.get_voice_fragment_url(language)
+    ask_confirmation_voice_label = input_element.ask_confirmation_voice_label.get_voice_fragment_url(language)
     final_voice_label = input_element.final_voice_label.get_voice_fragment_url(language)
 
     
