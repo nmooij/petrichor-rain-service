@@ -23,11 +23,13 @@
 </grammar>
 
 <form id="input_form">
-<input name="input" beep="true" dtmfterm="true">
+ <property name="inputmodes" value="dtmf"/>
+ <property name="interdigittimeout" value="2s"/>
+ <property name="timeout" value="4s"/>
+ <property name="termchar" value="#" />
+  <field name="DTMF input" type="digits?maxlength=5">
 <prompt>
 <audio src="{{ voice_label }}"/>
-<property name="termchar" value="#" />
-
 </prompt>
 
 
