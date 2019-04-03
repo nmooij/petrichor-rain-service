@@ -33,9 +33,9 @@ SECRET_KEY = 'tk2(l(00&kfe7j97j$dvgz&b6r!kk_zbse1(9w*eoc$bcwu773'
 ########
 
 
-#DEBUG = True
+DEBUG = True
 
-DEBUG = False
+#DEBUG = False
 
 
 
@@ -269,5 +269,5 @@ if 'DATABASE_URL' in os.environ:
     DATABASES = {'default': dj_database_url.config()}
 
    # import dj_database_url
-#ATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
