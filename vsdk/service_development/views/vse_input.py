@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 
-from .models import *
-#from ..models import *
+from ..models import *
 
 
 def input_get_redirect_url(input_element, session):
