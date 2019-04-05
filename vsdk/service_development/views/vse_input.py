@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 
-from ..models import *
+from .models import *
+#from ..models import *
 
 
 def input_get_redirect_url(input_element, session):
@@ -58,7 +59,6 @@ def Input(request, element_id, session_id):
 
     context['url'] = request.get_full_path(False)
 
-    return render(request, element_id, session_id) 
-    #return render(request, 'input.xml', context, content_type='text/xml')
+    return render(request, 'input.xml', context, content_type='text/xml')
     
     
