@@ -59,5 +59,5 @@ def Input(request, element_id, session_id):
     context['url'] = request.get_full_path(False)
 
     #return render(request, 'input.xml', context, content_type='text/xml')
-	return render(request, element_id, session_id) 
+return render(request, element_id, session_id) 
     
