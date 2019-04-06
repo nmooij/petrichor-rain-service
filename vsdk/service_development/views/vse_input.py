@@ -15,11 +15,7 @@ def input_generate_context(input_element, session):
     ask_confirmation_voice_label = input_element.ask_confirmation_voice_label.get_voice_fragment_url(language)
     final_voice_label = input_element.final_voice_label.get_voice_fragment_url(language)
 
-    
-        
-
-
-    context = { 'InputData': input_element,
+    context = { 'Input': input_element,
                'redirect_url': redirect_url,
                'voice_label' : voice_label,
 	           'ask_input_label' : ask_input_label,
