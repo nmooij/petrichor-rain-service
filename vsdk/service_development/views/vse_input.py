@@ -15,11 +15,7 @@ def input_generate_context(input_element, session):
     ask_confirmation_voice_label = input_element.ask_confirmation_voice_label.get_voice_fragment_url(language)
     final_voice_label = input_element.final_voice_label.get_voice_fragment_url(language)
 
-    
-        
-
-
-    context = { 'InputData': input_element,
+    context = { 'Input': input_element,
                'redirect_url': redirect_url,
                'voice_label' : voice_label,
 	           'ask_input_label' : ask_input_label,
@@ -30,7 +26,7 @@ def input_generate_context(input_element, session):
     return context
 
 
-def InputData(request, element_id, session_id):
+def Input(request, element_id, session_id):
     input_element = get_object_or_404(Record, pk=element_id)
     voice_service = input_element.service
     session = lookup_or_create_session(voice_service, session_id)
@@ -59,4 +55,5 @@ def InputData(request, element_id, session_id):
     context['url'] = request.get_full_path(False)
 
     return render(request, 'input.xml', context, content_type='text/xml')
+    
     
