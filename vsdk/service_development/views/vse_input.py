@@ -26,7 +26,7 @@ def input_generate_context(input_element, session):
     return context
 
 
-def Input(request, element_id, session_id):
+def InputData(request, element_id, session_id):
     input_element = get_object_or_404(Record, pk=element_id)
     voice_service = input_element.service
     session = lookup_or_create_session(voice_service, session_id)

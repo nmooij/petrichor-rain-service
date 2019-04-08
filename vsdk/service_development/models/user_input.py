@@ -30,8 +30,8 @@ class SpokenUserInput(models.Model):
 class UserInput(models.Model):
     input_value = models.CharField(max_length = 100, blank = True, null = True, default='null')
     session = models.ForeignKey(CallSession, on_delete=models.CASCADE)
-    category = models.ForeignKey(UserInputCategory, on_delete=models.CASCADE, verbose_name = _('Category'))
-    input_description = models.CharField(max_length = 1000, blank = True, null = True, verbose_name = _('Description'), default='null')
+    category = models.ForeignKey(UserInputCategory, on_delete=models.CASCADE, verbose_name = _('InputCategory'))
+    input_description = models.CharField(max_length = 1000, blank = True, null = True, verbose_name = _('InputDescription'), default='null')
     
 
 class Meta:
