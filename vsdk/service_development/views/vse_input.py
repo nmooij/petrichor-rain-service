@@ -27,7 +27,7 @@ def input_generate_context(input_element, session):
 
 
 def Input(request, element_id, session_id):
-    input_element = get_object_or_404(Record, pk=element_id)
+    input_element = get_object_or_404(Input, pk=element_id)
     voice_service = input_element.service
     session = lookup_or_create_session(voice_service, session_id)
 
@@ -54,4 +54,4 @@ def Input(request, element_id, session_id):
 
     context['url'] = request.get_full_path(False)
 
-    return render(request, 'inputData.xml', context, content_type='text/xml')
+    return render(request, 'input.xml', context, content_type='text/xml')
