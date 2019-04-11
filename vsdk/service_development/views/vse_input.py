@@ -1,6 +1,11 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 
+
+from ..models import InputData as InputData_model
+from ..models import session
+
 from ..models import *
+
 
 
 def input_get_redirect_url(input_element, session):
@@ -11,7 +16,8 @@ def input_generate_context(input_element, session):
     redirect_url = input_get_redirect_url(input_element, session)
 
 
-    ask_input_label = input_element.voice.label.ask_input_label_url(language)
+    voice_label = input_element.voice_label.get_voice_fragment_url(language)
+    ask_input_label = input_element.ask_input_label.get_voice_fragment_url(language)
     ask_confirmation_voice_label = input_element.ask_confirmation_voice_label.get_voice_fragment_url(language)
     final_voice_label = input_element.final_voice_label.get_voice_fragment_url(language)
 
@@ -26,8 +32,8 @@ def input_generate_context(input_element, session):
     return context
 
 
-def Input(request, element_id, session_id):
-    input_element = get_object_or_404(InputData, pk=element_id)
+def InputData(request, element_id, session_id):
+    input_element = get_object_or_404(InputData_model, pk=element_id)
     voice_service = input_element.service
     session = lookup_or_create_session(voice_service, session_id)
 
@@ -49,7 +55,7 @@ def Input(request, element_id, session_id):
         return redirect(request.POST['redirect'])
 
 
-    session.input_step(input_element)
+    session.record_step(input_element)
     context = input_generate_context(input_element, session)
 
     context['url'] = request.get_full_path(False)

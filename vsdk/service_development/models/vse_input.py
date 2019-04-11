@@ -14,8 +14,8 @@ class InputData(VoiceServiceElement):
     _urls_name = 'service-development:InputData'
 
     
-    ask_input_label = models.BooleanField(_('Ask the user to fill something in'), default=True)
-    input_voice_label = models.ForeignKey(
+    ask_input = models.BooleanField(_('Ask the user to fill something in'), default=True)
+    ask_input_label = models.ForeignKey(
         VoiceLabel,
         verbose_name = _('Ask input label'),
         help_text = _('The voice label that is played before the system asks the user to fill in the input'),
