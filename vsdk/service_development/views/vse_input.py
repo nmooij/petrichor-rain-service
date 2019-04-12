@@ -41,7 +41,7 @@ def InputData(request, element_id, session_id):
     if request.method == "POST":
         session = get_object_or_404(CallSession, pk=session_id)
 
-        value = 'DTMF input'
+        value = 'DTMF_input'
 
         result = UserInput()
 
