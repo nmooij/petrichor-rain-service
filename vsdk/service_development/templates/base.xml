@@ -6,6 +6,9 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.w3.org/2001/vxml
   http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.xsd">
+  
+<meta name="maintainer" content="n.mooij@student.vu.nl" />
+  
 <property name="inputmodes" value="dtmf" />
 
 <!-- Kasadaka VoiceXML File -->
