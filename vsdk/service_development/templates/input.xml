@@ -1,60 +1,22 @@
-{% extends "base.xml" %}
+﻿{% extends "base.xml" %}
 {% block content %}
 
 <form id="input_form">
- <!-- <property name="inputmodes" value="dtmf"/> -->
- <property name="interdigittimeout" value="2s"/>
+  <property name="interdigittimeout" value="2s"/>
  <property name="timeout" value="4s"/>
  <property name="termchar" value="#" />
-  <field name="input_value" type="digits?maxlength=5">
-<prompt>
-<audio src="{{ voice_label }}"/>
-</prompt>
-</field>
-
-{%  if record.ask_confirmation %}
-
-    <field name="confirm">
-        <prompt>
-        <audio src="{{ask_confirmation_voice_label}}"/>
-        </prompt>
-        <grammar xml:lang="en-US" root = "MYRULE" mode="dtmf">
-              <rule id="MYRULE" scope = "public">
-                <one-of>
-                    <item>1</item>
-                    <item>2</item>
-                </one-of>
-               </rule>
-             </grammar>
-          <filled>
-              <if cond="confirm == '1'">
-                  <prompt>
-                      <audio src="{{final_voice_label}}"/>
-                  </prompt>
-                  <assign name="redirect" expr="'{{ redirect_url }}'"/>
-                  <submit next="{{ url }}" enctype="multipart/form-data" method="post" namelist="input_value"/>
-           </if>
-              <if cond="confirm == '2'">
-            <goto next="{{ url }}"/>
-           </if>
-          </filled>
- </field>
-
-{% endif %}
-
-
-<block>
+  <field name="input_value" type="digits?minlength=1;maxlength=5">
     <prompt>
-        <audio src="{{final_voice_label}}"/>
+     <audio src="{{ ask_input_label }}"/>
     </prompt>
-	<submit next=" {{redirect_url}}" namelist="input_value" method="post"/> 
-   <!---- <goto next="{{ redirect_url }}" />----> 
 
-</block>
-
-
-
-
+    <filled>
+    
+     <assign name="input_value" expr="input_value"/>
+     <!--namelist="DTFM_input"-->
+      <submit next="{{redirect_url}}" namelist="input_value" method="post"/>
+    </filled>
+  </field>
 </form>
 
 {% endblock %}
