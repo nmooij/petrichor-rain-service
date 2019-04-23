@@ -44,6 +44,10 @@ def InputData(request, element_id, session_id):
         value = 'DTMF_input'
 
         result = UserInput()
+		
+		
+		
+        result.input_value = request.POST.get('input_value')
 
         result.session = session
 

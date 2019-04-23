@@ -14,7 +14,9 @@
     
      <assign name="input_value" expr="input_value"/>
      <!--namelist="DTFM_input"-->
-      <submit next="{{redirect_url}}" namelist="input_value" method="post"/>
+	  <assign name="redirect" expr="'{{ redirect_url }}'"/>
+	  <submit next="{{url}}" enctype="multipart/form-data" namelist="redirect input_value" method="post"/>
+      <!--<submit next="{{redirect_url}}" namelist="input_value" method="post"/>-->
     </filled>
   </field>
 </form>
