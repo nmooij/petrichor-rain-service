@@ -24,7 +24,7 @@ def input_generate_context(input_element, session):
     context = { 'InputData': input_element,
                'redirect_url': redirect_url,
                #'voice_label' : voice_label,
-	           'ask_input_label' : ask_input_label,
+                   'ask_input_label' : ask_input_label,
                #'ask_confirmation_voice_label' : ask_confirmation_voice_label,
                'final_voice_label' : final_voice_label,
                }
@@ -44,19 +44,15 @@ def InputData(request, element_id, session_id):
         value = 'DTMF_input'
 
         result = UserInput()
-		
-		
-		
-        result.input_value = request.POST.get('input_value')
 
+        result.input_value = request.POST.get("input_value")
         result.session = session
-
         result.category = input_element.input_category 
 
         result.save()
 
        
-        return redirect(request.POST['redirect'])
+        return redirect(request.POST['input_value'])
 
 
     session.record_step(input_element)
