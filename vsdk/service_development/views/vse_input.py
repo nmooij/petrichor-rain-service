@@ -45,8 +45,7 @@ def InputData(request, element_id, session_id):
 
         result = UserInput()
 
-        #result.input_value = request.POST.get("input_value")
-        result.input_value = request.POST['input_value']
+        result.input_value = request.POST.get('input_value')
         result.session = session
         result.category = input_element.input_category 
 
