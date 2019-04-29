@@ -53,7 +53,7 @@ def InputData(request, element_id, session_id):
         result.save()
 
        
-        return redirect(request.POST['input_value'])
+        return redirect(request.POST['redirect'])
 
 
     session.record_step(input_element)
