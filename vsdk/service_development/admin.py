@@ -184,7 +184,7 @@ class SpokenUserInputAdmin(admin.ModelAdmin):
 	
 class UserInputAdmin(admin.ModelAdmin):
     list_display = ('__str__','category','input_description','input_value')
-    list_filter = ('category','category')
+    list_filter = ('category')
     fieldsets = [(_('General'), {'fields' : ['session','category','input_description','input_value']})]
     readonly_fields = ('input_value','session','category')
     can_delete = True
