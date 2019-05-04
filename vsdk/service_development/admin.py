@@ -149,8 +149,8 @@ class CallSessionInline(admin.TabularInline):
     max_num = 0
 
 class CallSessionAdmin(admin.ModelAdmin):
-    list_display = ('start','user','service','caller_id','language')
-    list_filter = ('service','user','caller_id')
+    list_display = ('start','user','service','caller_id')
+    list_filter = ('user','caller_id')
     fieldsets = [(_('General'), {'fields' : ['service', 'user','caller_id','start','end','language']})]
     readonly_fields = ('service','user','caller_id','start','end','language') 
     inlines = [CallSessionInline]
@@ -172,7 +172,7 @@ class MessagePresentationAdmin(VoiceServiceElementAdmin):
     fieldsets = VoiceServiceElementAdmin.fieldsets + [(_('Message Presentation'), {'fields': ['_redirect','final_element']})]
 
 class KasaDakaUserAdmin(admin.ModelAdmin):
-    list_filter = ['service','language','caller_id']
+    list_filter = ['language','caller_id']
     list_display = ('__str__','caller_id', 'service', 'language')
 
 class SpokenUserInputAdmin(admin.ModelAdmin):
@@ -183,8 +183,8 @@ class SpokenUserInputAdmin(admin.ModelAdmin):
     can_delete = True
 	
 class UserInputAdmin(admin.ModelAdmin):
-    list_display = ('__str__','category','input_description','input_value')
-    list_filter = ('category')
+    list_display = ('__str__','category','input_value', 'session')
+    list_filter = ('category',)
     fieldsets = [(_('General'), {'fields' : ['session','category','input_description','input_value']})]
     readonly_fields = ('input_value','session','category')
     can_delete = True
