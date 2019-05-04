@@ -52,9 +52,9 @@ def InputData(request, element_id, session_id):
         result.save()
 
        
-        return redirect(request.POST['redirect'])
-        
-
+        #return redirect(request.POST['redirect'])
+        return redirect (request.POST.get('redirect'))
+                                     
     session.record_step(input_element)
     context = input_generate_context(input_element, session)
 
