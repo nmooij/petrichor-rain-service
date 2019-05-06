@@ -12,8 +12,7 @@
 
     <filled>
     
-     <assign name="redirect" expr="{{ redirect_url }}"/>
-     <!---<assign name="redirect" expr="'{{ redirect_url }}'"/>-->
+     <assign name="redirect" expr="'{{ redirect_url }}'"/>
      <submit next="{{ url }}" enctype="multipart/form-data" namelist="input_value" method="post"/>
      
      <goto next="{{ redirect_url }}" />
