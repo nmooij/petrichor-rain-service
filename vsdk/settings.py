@@ -107,8 +107,8 @@ WSGI_APPLICATION = 'vsdk.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        #'NAME': 'DB_NEW',
-		'NAME': 'DB',
+        'NAME': 'DB_NEW',
+		#'NAME': 'DB',
         'USER': 'Admin',
         'PASSWORD': 'SuperUser',
         'HOST': '127.0.0.1',
