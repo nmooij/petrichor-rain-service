@@ -19,6 +19,9 @@ from django.conf.urls.static import static
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
+
+from django.urls import include, path
+
 admin.site.site_header = _("Petrichor Rain Service")
 
 urlpatterns = [

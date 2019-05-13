@@ -40,7 +40,6 @@ DEBUG = True
 
 
 
-
 ALLOWED_HOSTS = ['*']
 #ALLOWED_HOSTS = ['petrichor-rain-system.herokuapp.com']
 

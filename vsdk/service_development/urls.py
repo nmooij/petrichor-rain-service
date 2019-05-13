@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^language_select/(?P<session_id>[0-9]+)$', views.LanguageSelection.as_view(), name = 'language-selection'),
     url(r'^record/(?P<element_id>[0-9]+)/(?P<session_id>[0-9]+)$', views.record, name='record'),
     url(r'^InputData/(?P<element_id>[0-9]+)/(?P<session_id>[0-9]+)$', views.InputData, name='InputData'),
-    url(r'^dashboard/$', views.DashboardView.as_view(), name='dashboard')
+	url(r'^dashboard/$', views.dashboard, name='dashboard'),
 ]
