@@ -6,4 +6,4 @@ from .user import *
 from .voiceservice import *
 from .language import *
 from .vse_input import *
-from .dashboard import *
+from .dashboardview import *

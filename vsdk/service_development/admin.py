@@ -211,5 +211,6 @@ admin.site.register(UserInputCategory)
 admin.site.register(Record)
 admin.site.register(InputData)
 admin.site.register(UserInput,UserInputAdmin)
+admin.site.register(Dashboard)
 
 
