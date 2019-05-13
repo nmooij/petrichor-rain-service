@@ -9,12 +9,12 @@ from django.utils.safestring import mark_safe
 
 
 
-class Dashboard(models.Model):
-    dashboard_name = models.CharField(_('DashboardName'),max_length=100, unique = True)
-    dashboard_code = models.CharField(_('DashboardCode'),max_length=10, unique = True)
+# class Dashboard(models.Model):
+    # dashboard_name = models.CharField(_('DashboardName'),max_length=100, unique = True)
+    # dashboard_code = models.CharField(_('DashboardCode'),max_length=10, unique = True)
     
 
-    class Meta:
-        verbose_name = _('Dashboard')
+    # class Meta:
+        # verbose_name = _('Dashboard')
 
     
