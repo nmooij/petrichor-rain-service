@@ -74,6 +74,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'vsdk.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -89,6 +90,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'vsdk.wsgi.application'
 
