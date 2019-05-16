@@ -9,21 +9,27 @@ from django.utils.translation import ugettext_lazy as _
 from . import Language
 from . import VoiceService
 
+
 class KasaDakaUser(models.Model):
     """
     User that belongs to a Voice Service on this system
     """
     caller_id = models.CharField(_('Phone number'),max_length=100, unique = True)
-	#phone_number = PhoneNumberField()
+    farmer_id = models.CharField(_('FarmerID'),max_length=5, unique = True)
     first_name = models.CharField(_('First name'), max_length = 100, blank = True)
     last_name = models.CharField(_('Last name'), max_length=100, blank = True)
     creation_date = models.DateTimeField(_('Date created'),auto_now_add = True)
     modification_date = models.DateTimeField(_('Date last modified'),auto_now = True)
+    region = models.CharField(_('Region'), max_length=100, blank = True)
+    country = models.CharField(_('Country'), max_length=100, blank = True)
+    longitude = models.CharField(_('Longitude'), max_length=100, blank = True)
+    latitude = models.CharField(_('Latitude'), max_length=100, blank = True)
     language = models.ForeignKey(Language,on_delete = models.SET_NULL, null = True)
     service = models.ForeignKey(VoiceService, on_delete = models.CASCADE)
+    
 
     class Meta:
-        verbose_name = _('KasaDaka User')
+        verbose_name = _('Caller')
 
     def __str__(self):
         if not (self.first_name or self.last_name):

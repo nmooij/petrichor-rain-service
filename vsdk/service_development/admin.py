@@ -172,15 +172,9 @@ class MessagePresentationAdmin(VoiceServiceElementAdmin):
     fieldsets = VoiceServiceElementAdmin.fieldsets + [(_('Message Presentation'), {'fields': ['_redirect','final_element']})]
 
 class KasaDakaUserAdmin(admin.ModelAdmin):
-    list_filter = ['language','caller_id']
-    list_display = ('__str__','caller_id', 'service', 'language')
-
-class SpokenUserInputAdmin(admin.ModelAdmin):
-    list_display = ('__str__','category','description')
-    list_filter = ('category',)
-    fieldsets = [(_('General'), {'fields' : ['audio', 'session','category','description']})]
-    readonly_fields = ('audio','session','category')
-    can_delete = True
+    list_filter = ['farmer_id','caller_id', 'country', 'region']
+    list_display = ('__str__','farmer_id','caller_id', 'service')
+    fieldsets = [(_('General'),    {'fields' : ['caller_id', 'farmer_id', 'first_name', 'last_name']}),(_('Location'), {'fields': ['region','country','longitude','latitude']})]
 	
 class UserInputAdmin(admin.ModelAdmin):
     list_display = ('__str__','category','input_value', 'session')
@@ -204,13 +198,11 @@ admin.site.register(MessagePresentation, MessagePresentationAdmin)
 admin.site.register(Choice, ChoiceAdmin)
 admin.site.register(CallSession, CallSessionAdmin)
 admin.site.register(KasaDakaUser, KasaDakaUserAdmin)
-admin.site.register(Language)
+#admin.site.register(Language)
 admin.site.register(VoiceLabel, VoiceLabelAdmin)
-admin.site.register(SpokenUserInput, SpokenUserInputAdmin)
 admin.site.register(UserInputCategory)
-admin.site.register(Record)
 admin.site.register(InputData)
 admin.site.register(UserInput,UserInputAdmin)
-#admin.site.register(Dashboard)
+
 
 

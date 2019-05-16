@@ -13,29 +13,7 @@ class InputData(VoiceServiceElement):
 
     _urls_name = 'service-development:InputData'
 
-    
-    ask_input = models.BooleanField(_('Ask the user to fill something in'), default=True)
-    ask_input_label = models.ForeignKey(
-        VoiceLabel,
-        verbose_name = _('Ask input label'),
-        help_text = _('The voice label that is played before the system asks the user to fill in the input'),
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name='ask_input_label_input'
-    )
 
-    ask_confirmation = models.BooleanField(
-        _('Ask the caller to confirm their input'), default=True)
-    ask_confirmation_voice_label = models.ForeignKey(
-        VoiceLabel,
-        verbose_name = _('Ask for confirmation voice label'),
-        help_text = _('The voice label that asks the user to confirm their pinput. Example: "Are you satisfied with your recording? Press 1 to confirm, or press 2 to retry."'),
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name='confirmation_voice_label_input',
-    )
     final_voice_label = models.ForeignKey(
         VoiceLabel,
         verbose_name = _('Final voice label'),
