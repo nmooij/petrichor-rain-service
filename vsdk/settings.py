@@ -159,9 +159,9 @@ STATIC_URL = '/static/'
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
 STATICFILES_DIRS = (
-#  os.path.join(SITE_ROOT, 'static/'),
+  os.path.join(SITE_ROOT, 'static/'),
   #os.path.join(SITE_ROOT, 'uploads/'),
-  os.path.join(BASE_DIR, 'fc_column2d/templates/static'),
+  #os.path.join(BASE_DIR, 'fc_column2d/templates/static'),
 )
 
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'uploads')
