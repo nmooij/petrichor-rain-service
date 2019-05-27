@@ -78,7 +78,8 @@ ROOT_URLCONF = 'vsdk.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        #'DIRS': [os.path.join(BASE_DIR, 'templates')],
+	    'DIRS': ['dashboard/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -96,13 +97,13 @@ WSGI_APPLICATION = 'vsdk.wsgi.application'
 
 
 
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-#DATABASES = {
- #    'default': {
-#		 'ENGINE': 'django.db.backends.sqlite3',
-#		 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#	     }}
+# # Database
+# # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+# DATABASES = {
+    # 'default': {
+		 # 'ENGINE': 'django.db.backends.sqlite3',
+		 # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	     # }}
 
 
 DATABASES = {
@@ -159,7 +160,8 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
 STATICFILES_DIRS = (
 #  os.path.join(SITE_ROOT, 'static/'),
-  os.path.join(SITE_ROOT, 'uploads/'),
+  #os.path.join(SITE_ROOT, 'uploads/'),
+  os.path.join(BASE_DIR, 'fc_column2d/templates/static'),
 )
 
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'uploads')

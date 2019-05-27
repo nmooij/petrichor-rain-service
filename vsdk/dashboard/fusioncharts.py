@@ -3,6 +3,7 @@ import json
 from collections import OrderedDict
 from io import StringIO
 from enum import Enum
+from django.db import models
 
 # Common base class for FC
 class FusionCharts:
