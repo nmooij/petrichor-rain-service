@@ -177,10 +177,10 @@ class KasaDakaUserAdmin(admin.ModelAdmin):
     fieldsets = [(_('General'),    {'fields' : ['caller_id', 'farmer_id', 'first_name', 'last_name']}),(_('Location'), {'fields': ['region','country','longitude','latitude']})]
 	
 class UserInputAdmin(admin.ModelAdmin):
-    list_display = ('__str__','category','input_value', 'session')
-    list_filter = ('category',)
-    fieldsets = [(_('General'), {'fields' : ['session','category','input_description','input_value']})]
-    readonly_fields = ('input_value','session','category')
+    list_display = ('__str__','category','input_value', 'session', 'input_date')
+    list_filter = ('category','input_date',)
+    fieldsets = [(_('General'), {'fields' : ['session','category','input_description','input_value', 'input_date']})]
+    readonly_fields = ('input_value','session','category','input_date')
     can_delete = True
 
 

@@ -24,26 +24,8 @@ class UserInput(models.Model):
     session = models.ForeignKey(CallSession, on_delete=models.CASCADE)
     category = models.ForeignKey(UserInputCategory, on_delete=models.CASCADE, verbose_name = _('Category'))
     input_description = models.CharField(max_length = 1000, blank = True, null = True, verbose_name = _('Description'), default='null')
-   
+    input_date = models.DateField(_('Input date'),auto_now_add = True)
+
 
 class Meta:
     verbose_name = _('User Input')
-     
-           
-
-    # def __str__(self):
-        # from django.template import defaultfilters
-        # date = defaultfilters.date(self.time, "SHORT_DATE_FORMAT")
-        # time = defaultfilters.time(self.time, "TIME_FORMAT")
-        # return _('Spoken User Input: %(category_name)s @ %(date)s %(time)s by %(caller_id)s (%(service_name)s)') %{'category_name' : self.category.name, 'date' : str(date), 'time' : str(time), 'caller_id' : str(self.session.caller_id), 'service_name' : self.session.service.name}
-
-
-    # def audio_file_player(self):
-        # """audio player tag for admin"""
-        # if self.audio:
-            # file_url = settings.MEDIA_URL + str(self.audio)
-            # player_string = str('<audio src="%s" controls>'  % (file_url) + ugettext('Your browser does not support the audio element.') + '</audio>')
-            # return player_string
-
-    # audio_file_player.allow_tags = True
-    # audio_file_player.short_description = _('Audio file player')
