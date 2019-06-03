@@ -20,7 +20,7 @@ def Chart(request):
             "subCaption": "Shown per date",
             "xAxisName": "Session",
             "yAxisName": "Rainfall in MM",
-            "theme": "candy"
+            "theme": "Gammel",
         }
 
     dataSourceBar['data'] = []	
@@ -46,7 +46,7 @@ def Chart(request):
         "smartLineAlpha": "50",
         "isSmartLineSlanted": "1",
         "skipOverlapLabels": "1",
-        "theme": "fusion",
+        "theme": "Gammel"
         }
 
     dataSourcePie['data'] = []	    
