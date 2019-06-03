@@ -7,4 +7,5 @@ from .vse_choice import *
 from .vse_message import *
 from .user_input import *
 from .vse_input import *
+from .dashboard_config_model import *
 

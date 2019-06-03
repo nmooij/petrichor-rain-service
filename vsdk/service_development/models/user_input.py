@@ -24,7 +24,7 @@ class UserInput(models.Model):
     session = models.ForeignKey(CallSession, on_delete=models.CASCADE)
     category = models.ForeignKey(UserInputCategory, on_delete=models.CASCADE, verbose_name = _('Category'))
     input_description = models.CharField(max_length = 1000, blank = True, null = True, verbose_name = _('Description'), default='null')
-    input_date = models.DateField(_('Input date'),auto_now_add = True)
+    #input_date = models.DateField(_('Input date'),auto_now_add = True)
 
 
 class Meta:

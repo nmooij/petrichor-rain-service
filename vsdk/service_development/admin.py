@@ -174,13 +174,13 @@ class MessagePresentationAdmin(VoiceServiceElementAdmin):
 class KasaDakaUserAdmin(admin.ModelAdmin):
     list_filter = ['farmer_id','caller_id', 'country', 'region']
     list_display = ('__str__','farmer_id','caller_id', 'service')
-    fieldsets = [(_('General'),    {'fields' : ['caller_id', 'farmer_id', 'first_name', 'last_name']}),(_('Location'), {'fields': ['region','country','longitude','latitude']})]
+    fieldsets = [(_('General'),    {'fields' : ['caller_id', 'farmer_id', 'first_name', 'last_name']}),(_('Location'), {'fields': ['region','country']})]
 	
 class UserInputAdmin(admin.ModelAdmin):
-    list_display = ('__str__','category','input_value', 'session', 'input_date')
-    list_filter = ('category','input_date',)
-    fieldsets = [(_('General'), {'fields' : ['session','category','input_description','input_value', 'input_date']})]
-    readonly_fields = ('input_value','session','category','input_date')
+    list_display = ('__str__','category','input_value', 'session')
+    list_filter = ('category',)
+    fieldsets = [(_('General'), {'fields' : ['session','category','input_description','input_value']})]
+    readonly_fields = ('input_value','session','category')
     can_delete = True
 
 
@@ -203,6 +203,8 @@ admin.site.register(VoiceLabel, VoiceLabelAdmin)
 admin.site.register(UserInputCategory)
 admin.site.register(InputData)
 admin.site.register(UserInput,UserInputAdmin)
+#admin.site.register(DashboardConfig)
+
 
 
 

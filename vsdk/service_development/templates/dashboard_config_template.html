@@ -1,0 +1,23 @@
+<html>
+
+	<head>
+		<title>Petrichor Rain Service Index page</title>
+	</head>
+
+
+	<body>
+		<form action="" method="post">{% csrf_token %}
+    {{ form.barchart_sort }}
+    {{ form.barchart_xas }}
+    {{ form.barchart_yas }}
+    {{ form.piechart_sort }}
+    {{ form.piechart_xas }}
+    {{ form.piechart_yas }}
+
+    <input type="submit" value="Create" />
+</form>
+
+	</body>
+
+
+</html>

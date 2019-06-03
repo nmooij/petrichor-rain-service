@@ -22,8 +22,6 @@ class KasaDakaUser(models.Model):
     modification_date = models.DateTimeField(_('Date last modified'),auto_now = True)
     region = models.CharField(_('Region'), max_length=100, blank = True)
     country = models.CharField(_('Country'), max_length=100, blank = True)
-    longitude = models.CharField(_('Longitude'), max_length=100, blank = True)
-    latitude = models.CharField(_('Latitude'), max_length=100, blank = True)
     language = models.ForeignKey(Language,on_delete = models.SET_NULL, null = True)
     service = models.ForeignKey(VoiceService, on_delete = models.CASCADE)
     
@@ -37,7 +35,7 @@ class KasaDakaUser(models.Model):
         else:
             return "%s %s (%s)" % (self.first_name, self.last_name, self.caller_id)
 
-
+ 
 def lookup_kasadaka_user_by_caller_id(caller_id, service):
     """
     If user with caller_id for current voice_service exists, returns User object.
