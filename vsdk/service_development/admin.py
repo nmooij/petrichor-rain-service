@@ -174,7 +174,7 @@ class MessagePresentationAdmin(VoiceServiceElementAdmin):
 class KasaDakaUserAdmin(admin.ModelAdmin):
     list_filter = ['farmer_id','caller_id', 'country', 'region']
     list_display = ('__str__','farmer_id','caller_id', 'service')
-    fieldsets = [(_('General'),    {'fields' : ['caller_id', 'farmer_id', 'first_name', 'last_name']}),(_('Location'), {'fields': ['region','country']})]
+    fieldsets = [(_('General'),    {'fields' : ['caller_id', 'farmer_id', 'first_name', 'last_name']}),(_('Location'), {'fields': ['city','region','country', 'latitude', 'longitude']})]
 	
 class UserInputAdmin(admin.ModelAdmin):
     list_display = ('__str__','category','input_value', 'session')
@@ -198,7 +198,7 @@ admin.site.register(MessagePresentation, MessagePresentationAdmin)
 admin.site.register(Choice, ChoiceAdmin)
 admin.site.register(CallSession, CallSessionAdmin)
 admin.site.register(KasaDakaUser, KasaDakaUserAdmin)
-#admin.site.register(Language)
+admin.site.register(Language)
 admin.site.register(VoiceLabel, VoiceLabelAdmin)
 admin.site.register(UserInputCategory)
 admin.site.register(InputData)

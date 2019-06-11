@@ -14,7 +14,7 @@
 {% load static %}
 <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
 <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script> 
-
+<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fint.js"></script> 
 </head>
 
 </head>
@@ -29,19 +29,35 @@
 
 <div class="row">
 <div class="col-3">
-<h3>BLOCK 1 </h3>
+<div class="card text-white bg-primary mb-3">
+  <div class="card-body">
+    <p class="card-text"> {{ today|safe }}</p>
+  </div>
+</div>
 </div>
 
 <div class="col-3">
-<h3>BLOCK 2 </h3>
+<div class="card text-white bg-success mb-3">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
 </div>
 
 <div class="col-3">
-<h3>BLOCK 3 </h3>
+<div class="card text-white bg-warning mb-3">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
 </div>
 
 <div class="col-3">
-<h3>BLOCK 4 </h3>
+<div class="card text-white bg-info mb-3">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
 </div>
 </div>
 
@@ -56,6 +72,16 @@
 <div id="pie-container">{{ output2|safe }}</div>
 </div>
 </div>
+
+<!-- <div class="row">
+<div class="col-6">
+<div id="line-container">{{ output3|safe }}</div>
+</div>
+<div class="col-6">
+
+</div>
+</div> -->
+
 
 
 </body>

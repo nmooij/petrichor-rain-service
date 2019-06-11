@@ -26,6 +26,9 @@ class dashboard_input(models.Model):
     category_category_id = models.IntegerField()
     category_category_name = models.CharField(max_length=100)
     input_input_value = models.CharField(max_length=100)
+    farmer_city = models.CharField(max_length=100, default='null')
+    farmer_longitude = models.CharField(max_length=100, default='null')
+    farmer_latitude = models.CharField(max_length=100, default='null')
 
 class Meta:
     managed = False

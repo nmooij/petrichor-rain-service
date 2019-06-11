@@ -4,8 +4,6 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 
-#from phonenumber_field.modelfields import PhoneNumberField
-
 from . import Language
 from . import VoiceService
 
@@ -20,8 +18,11 @@ class KasaDakaUser(models.Model):
     last_name = models.CharField(_('Last name'), max_length=100, blank = True)
     creation_date = models.DateTimeField(_('Date created'),auto_now_add = True)
     modification_date = models.DateTimeField(_('Date last modified'),auto_now = True)
+    city = models.CharField(_('City'), max_length=100, blank = True)
     region = models.CharField(_('Region'), max_length=100, blank = True)
     country = models.CharField(_('Country'), max_length=100, blank = True)
+    longitude = models.CharField(_('Longitude'), max_length=100, blank = True)
+    latitude = models.CharField(_('Latitude'), max_length=100, blank = True)
     language = models.ForeignKey(Language,on_delete = models.SET_NULL, null = True)
     service = models.ForeignKey(VoiceService, on_delete = models.CASCADE)
     
