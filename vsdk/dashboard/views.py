@@ -57,36 +57,115 @@ def Chart(request):
                  'value': obj.input_input_value}
         dataSourcePie['data'].append(data)	
 
-###############################
-    # dataSourceLine = {}
-    # dataSourceLine['chart'] = {
-        # "caption": "Average Fastball Velocity",
-        # "yaxisname": "Velocity (in mph)",
-        # "subcaption": "[2005-2016]",
-        # "numbersuffix": " mph",
-        # "rotatelabels": "1",
-        # "setadaptiveymin": "1",
-        # "theme": "fusion"
-        # }
 
-    # dataSourceLine['data'] = []	    
+##Line
+
+    # dataSourceline = OrderedDict()
+
+    # chartConfig = OrderedDict()
+    # chartConfig["caption"] = "Countries With Most Oil Reserves [2017-18]"
+    # chartConfig["subCaption"] = "In MMbbl = One Million barrels"
+    # chartConfig["xAxisName"] = "Country"
+    # chartConfig["yAxisName"] = "Reserves (MMbbl)"
+    # chartConfig["theme"] = "fusion"
 
 
-    # for obj in AvgRainPerCountry.objects.all():
-        # data =  {'label': obj.Month,
-                 # 'value': obj.Rainfall}
-        # dataSourceLine['data'].append(data)	
+    # chartData = OrderedDict()
+    # chartData["Jan"] = 366676
+    # chartData["Feb"] = 309590
+    # chartData["March"] = 578333
+    # chartData["April"] = 361117
+    # chartData["May"] = 161616
+    # chartData["June"] = 178011
+    # chartData["July"] = 261100
+    # chartData["Aug"] = 347110
+    # chartData["Sep"] = 170168
+    # chartData["Oct"] = 265677
+    # chartData["Nov"] = 413062
+    # chartData["Dec"] = 277110
+
+    # dataSourceline["chart"] = chartConfig
+    # dataSourceline["data"] = []
+
+    # for key, value in chartData.items():
+        # data = {}
+    # data["label"] = key
+    # data["value"] = value
+    # dataSourceline["data"].append(data)
 
 
-###############################
+
 
 ##Render	
     doughnut3d = FusionCharts("doughnut3d", "PIE" , "100%", "400", "pie-container", "json", dataSourcePie)	
     column2D = FusionCharts("column3d", "BAR" , "600", "400", "Barchart-container", "json", dataSourceBar)
 
-    #chartObj = FusionCharts( "line", "LINE", "600", "400", "line-container", "json", dataSourceLine)
+    area2D = FusionCharts("line", "AREA", "600", "400", "area-container", "json",
+	
+        """{
+    "chart": {
+        "caption": "Historic Rainfall",
+        "subCaption": "Located in Ghana",
+        "xAxisName": "Month",
+        "yAxisName": "Rainfall in MM",
+        "showValues": "1",
+        "theme": "fusion"
+    },
+    "data": [
+        {
+            "label": "Jan",
+            "value": "366676"
+        },
+        {
+            "label": "Feb",
+            "value": "309590"
+        },
+        {
+            "label": "Mar",
+            "value": "578333"
+        },
+        {
+            "label": "April",
+            "value": "361117"
+        },
+        {
+            "label": "May",
+            "value": "161616"
+        },
+        {
+            "label": "June",
+            "value": "178011"
+        },
+		{
+            "label": "July",
+            "value": "261100"
+        },
+		{
+            "label": "Aug",
+            "value": "347110"
+        },
+		{
+            "label": "Sep",
+            "value": "170168"
+        },
+		{
+            "label": "Okt",
+            "value": "265677"
+        },
+		{
+            "label": "Nov",
+            "value": "413062"
+        },
+        {
+            "label": "Dec",
+            "value": "277110"
+        }
+    ]
+}""")
+        
 
-    return  render(request, 'dash.html', {'output' : column2D.render(),'output2' : doughnut3d.render()})#,'output3' : chartObj.render()})
+
+    return  render(request, 'dash.html', {'output' : column2D.render(),'output2' : doughnut3d.render(),'output3' : area2D.render()})
 
 
 
