@@ -95,8 +95,6 @@ class VoiceLabelInline(admin.TabularInline):
     fieldsets = [(_('General'),    {'fields' : [ 'language', 'is_valid', 'audio', 'audio_file_player']})]
     readonly_fields = ('audio_file_player','is_valid')
 
-
-
 class VoiceLabelByVoiceServicesFilter(admin.SimpleListFilter):
     # Human-readable title which will be displayed in the
     # right admin sidebar just above the filter options.
@@ -136,8 +134,6 @@ class VoiceLabelAdmin(admin.ModelAdmin):
         if not settings.KASADAKA:
             messages.add_message(request, messages.WARNING, _('Automatic .wav file conversion only works when running on real KasaDaka system. MANUALLY ensure your files are in the correct format! Wave (.wav) : Sample rate 8KHz, 16 bit, mono, Codec: PCM 16 LE (s16l)'))
         super(VoiceLabelAdmin,self).save_model(request, obj, form, change)
-
-
 
 class CallSessionInline(admin.TabularInline):
     model = CallSessionStep

@@ -52,66 +52,6 @@ class Language(models.Model):
             verbose_name = _('Select language voice label'),
             related_name = 'language_select_language',
             help_text = _("A message requesting the user to select a language"))
-    pre_choice_option = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = _('Pre-Choice Option voice label'),
-            related_name = 'language_pre_choice_option',
-            help_text = _("The fragment that is to be played before a choice option (e.g. '[to select] option X, please press 1')"))
-    post_choice_option = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = _('Post-Choice Option voice label'),
-            related_name = 'language_post_choice_option',
-            help_text = _("The fragment that is to be played before a choice option (e.g. 'to select option X, [please press] 1')"))
-    one = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = ugettext("The number %(number)s")% {'number':'1'},
-            related_name = 'language_one',
-            help_text = ugettext('The number %(number)s')% {'number':'1'})
-    two = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = ugettext("The number %(number)s")% {'number':'2'},
-            related_name = 'language_two',
-            help_text = ugettext("The number %(number)s")% {'number':'2'})
-    three = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = ugettext("The number %(number)s")% {'number':'3'},
-            related_name = 'language_three',
-            help_text = ugettext("The number %(number)s")% {'number':'3'})
-    four = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = ugettext("The number %(number)s")% {'number':'4'},
-            related_name = 'language_four',
-            help_text = ugettext("The number %(number)s")% {'number':'4'})
-    five = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = ugettext("The number %(number)s")% {'number':'5'},
-            related_name = 'language_five',
-            help_text = ugettext("The number %(number)s")% {'number':'5'})
-    six = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = ugettext("The number %(number)s")% {'number':'6'},
-            related_name = 'language_six',
-            help_text = ugettext("The number %(number)s")% {'number':'6'})
-    seven = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = ugettext("The number %(number)s")% {'number':'7'},
-            related_name = 'language_seven',
-            help_text = ugettext("The number %(number)s")% {'number':'7'})
-    eight = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = ugettext("The number %(number)s")% {'number':'8'},
-            related_name = 'language_eight',
-            help_text = ugettext("The number %(number)s")% {'number':'8'})
-    nine = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = ugettext("The number %(number)s")% {'number':'9'},
-            related_name = 'language_nine',
-            help_text = ugettext("The number %(number)s")% {'number':'9'})
-    zero = models.ForeignKey('VoiceLabel',
-            on_delete = models.PROTECT,
-            verbose_name = ugettext("The number %(number)s")% {'number':'0'},
-            related_name = 'language_zero',
-            help_text = ugettext("The number %(number)s")% {'number':'0'})
 
     class Meta:
         verbose_name = _('Language')
@@ -127,24 +67,6 @@ class Language(models.Model):
         """
         return self.voice_label.get_voice_fragment_url(self)
 
-    @property
-    def get_interface_numbers_voice_label_url_list(self):
-        numbers = [
-                    self.zero,
-                    self.one,
-                    self.two,
-                    self.three,
-                    self.four,
-                    self.five,
-                    self.six,
-                    self.seven,
-                    self.eight,
-                    self.nine
-                    ]
-        result = []
-        for number in numbers:
-            result.append(number.get_voice_fragment_url(self))
-        return result
 
     @property
     def get_interface_voice_label_url_dict(self):
