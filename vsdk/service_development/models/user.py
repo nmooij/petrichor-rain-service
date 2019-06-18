@@ -12,8 +12,15 @@ class KasaDakaUser(models.Model):
     """
     User that belongs to a Voice Service on this system
     """
+    def autonumber():
+        no = KasaDakaUser.objects.count()
+        if no == None:
+            return 1
+        else:
+            return no + 1
+	
     caller_id = models.CharField(_('Phone number'),max_length=100, unique = True)
-    farmer_id = models.CharField(_('FarmerID'),max_length=5, unique = True)
+    farmer_id = models.CharField(_('FarmerID'),max_length=5, unique = True, default=autonumber)
     first_name = models.CharField(_('First name'), max_length = 100, blank = True)
     last_name = models.CharField(_('Last name'), max_length=100, blank = True)
     creation_date = models.DateTimeField(_('Date created'),auto_now_add = True)

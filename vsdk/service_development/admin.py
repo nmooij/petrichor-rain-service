@@ -171,6 +171,7 @@ class KasaDakaUserAdmin(admin.ModelAdmin):
     list_filter = ['farmer_id','caller_id', 'country', 'region']
     list_display = ('__str__','farmer_id','caller_id', 'service')
     fieldsets = [(_('General'),    {'fields' : ['caller_id', 'farmer_id', 'first_name', 'last_name']}),(_('Location'), {'fields': ['city','region','country', 'latitude', 'longitude']})]
+    readonly_fields = ('farmer_id',)
 	
 class UserInputAdmin(admin.ModelAdmin):
     list_display = ('__str__','category','input_value', 'session')
