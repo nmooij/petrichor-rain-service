@@ -78,8 +78,6 @@ class Language(models.Model):
                 'voice_label':self.voice_label,
                 'error_message':self.error_message,
                 'select_language':self.select_language,
-                'pre_choice_option':self.pre_choice_option,
-                'post_choice_option':self.post_choice_option,
                 }
         for k, v in interface_voice_labels.items():
             interface_voice_labels[k] = v.get_voice_fragment_url(self)
