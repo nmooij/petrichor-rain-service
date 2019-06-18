@@ -200,7 +200,7 @@ admin.site.register(VoiceLabel, VoiceLabelAdmin)
 admin.site.register(UserInputCategory)
 admin.site.register(InputData)
 admin.site.register(UserInput,UserInputAdmin)
-#admin.site.register(DashboardConfig)
+admin.site.register(DashboardConfig)
 
 
 

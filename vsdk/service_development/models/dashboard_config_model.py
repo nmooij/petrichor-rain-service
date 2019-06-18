@@ -30,9 +30,9 @@ class dashboard_input(models.Model):
     farmer_longitude = models.CharField(max_length=100, default='null')
     farmer_latitude = models.CharField(max_length=100, default='null')
 
-class Meta:
-    managed = False
-    db_table = 'View_dashboard_input'
+    class Meta:
+        managed = False
+        db_table = 'View_dashboard_input'
    
 
 class DashboardConfig(models.Model):

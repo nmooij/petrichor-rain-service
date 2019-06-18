@@ -28,8 +28,8 @@ class KasaDakaUser(models.Model):
     city = models.CharField(_('City'), max_length=100, blank = True)
     region = models.CharField(_('Region'), max_length=100, blank = True)
     country = models.CharField(_('Country'), max_length=100, blank = True)
-    longitude = models.CharField(_('Longitude'), max_length=100, blank = True)
-    latitude = models.CharField(_('Latitude'), max_length=100, blank = True)
+    longitude = models.DecimalField(_('Longitude'), max_digits=9, decimal_places=6, blank = True)
+    latitude = models.DecimalField(_('Latitude'), max_digits=9, decimal_places=6, blank = True)
     language = models.ForeignKey(Language,on_delete = models.SET_NULL, null = True)
     service = models.ForeignKey(VoiceService, on_delete = models.CASCADE)
     
