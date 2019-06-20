@@ -8,7 +8,10 @@ from vsdk.dashboard.models import AvgRainPerCountry
 
 from datetime import datetime
 import time
+from datetime import date
 from collections import OrderedDict
+
+
 
 def Chart(request):
 
@@ -58,48 +61,12 @@ def Chart(request):
         dataSourcePie['data'].append(data)	
 
 
-##Line
 
-    # dataSourceline = OrderedDict()
-
-    # chartConfig = OrderedDict()
-    # chartConfig["caption"] = "Countries With Most Oil Reserves [2017-18]"
-    # chartConfig["subCaption"] = "In MMbbl = One Million barrels"
-    # chartConfig["xAxisName"] = "Country"
-    # chartConfig["yAxisName"] = "Reserves (MMbbl)"
-    # chartConfig["theme"] = "fusion"
-
-
-    # chartData = OrderedDict()
-    # chartData["Jan"] = 366676
-    # chartData["Feb"] = 309590
-    # chartData["March"] = 578333
-    # chartData["April"] = 361117
-    # chartData["May"] = 161616
-    # chartData["June"] = 178011
-    # chartData["July"] = 261100
-    # chartData["Aug"] = 347110
-    # chartData["Sep"] = 170168
-    # chartData["Oct"] = 265677
-    # chartData["Nov"] = 413062
-    # chartData["Dec"] = 277110
-
-    # dataSourceline["chart"] = chartConfig
-    # dataSourceline["data"] = []
-
-    # for key, value in chartData.items():
-        # data = {}
-    # data["label"] = key
-    # data["value"] = value
-    # dataSourceline["data"].append(data)
-
-
-
-
-##Render	
     doughnut3d = FusionCharts("doughnut3d", "PIE" , "100%", "400", "pie-container", "json", dataSourcePie)	
     column2D = FusionCharts("column3d", "BAR" , "600", "400", "Barchart-container", "json", dataSourceBar)
 
+
+##Line
     area2D = FusionCharts("line", "AREA", "600", "400", "area-container", "json",
 	
         """{
@@ -162,14 +129,91 @@ def Chart(request):
         }
     ]
 }""")
-        
+
+    now = date.today()
+    this_month = datetime.now().strftime("%m") #this_month = datetime.now().strftime("%B")
+    this_year = datetime.now().strftime("%Y")
+	
+    # sum = 0
+    # input_input_value_with_category_id_2 = dashboard_input.objects.filter(service_service_id=3,category_category_id=2).values('input_input_value')
+    # for value in input_input_value_with_category_id_2:
+	    # sum += value
 
 
-    return  render(request, 'dash.html', {'output' : column2D.render(),'output2' : doughnut3d.render(),'output3' : area2D.render()})
+    #Rain_this_month = sum
+    #Rain_this_year = 
+	
+	
+##Historic_rain_this_month 
+    if datetime.now().strftime("%B") == 'January':
+        Historic_rain_this_month = 366676
+    elif datetime.now().strftime("%B") == 'February':
+        Historic_rain_this_month = 309590
+    elif datetime.now().strftime("%B") == 'March':
+        Historic_rain_this_month = 578333
+    elif datetime.now().strftime("%B") == 'April':
+        Historic_rain_this_month = 361117
+    elif datetime.now().strftime("%B") == 'May':
+        Historic_rain_this_month = 161616
+    elif datetime.now().strftime("%B") == 'June':
+        Historic_rain_this_month = 178011
+    elif datetime.now().strftime("%B") == 'July':
+        Historic_rain_this_month = 261100
+    elif datetime.now().strftime("%B") == 'Augustus':
+        Historic_rain_this_month = 347110
+    elif datetime.now().strftime("%B") == 'September':
+        Historic_rain_this_month = 170168
+    elif datetime.now().strftime("%B") == 'October':
+        Historic_rain_this_month = 265677
+    elif datetime.now().strftime("%B") == 'November':
+        Historic_rain_this_month = 413062
+    elif datetime.now().strftime("%B") == 'December':
+        Historic_rain_this_month = 277110
+    else:
+        Historic_rain_this_month = 0
+	
+##Histori_rain_this_year 
+    if datetime.now().strftime("%B") == 'January':
+        Histori_rain_this_year = 366676
+    elif datetime.now().strftime("%B") == 'February':
+        Histori_rain_this_year = 676266
+    elif datetime.now().strftime("%B") == 'March':
+        Histori_rain_this_year = 1254599
+    elif datetime.now().strftime("%B") == 'April':
+        Histori_rain_this_year = 1615716
+    elif datetime.now().strftime("%B") == 'May':
+        Histori_rain_this_year = 1777332
+    elif datetime.now().strftime("%B") == 'June':
+        Histori_rain_this_year = 1955343
+    elif datetime.now().strftime("%B") == 'July':
+        Histori_rain_this_year = 2216443
+    elif datetime.now().strftime("%B") == 'Augustus':
+        Histori_rain_this_year = 2563553
+    elif datetime.now().strftime("%B") == 'September':
+        Histori_rain_this_year = 2733721
+    elif datetime.now().strftime("%B") == 'October':
+        Histori_rain_this_year = 2999398
+    elif datetime.now().strftime("%B") == 'November':
+        Histori_rain_this_year = 3412460
+    elif datetime.now().strftime("%B") == 'December':
+        Histori_rain_this_year = 3689570
+    else:
+        Histori_rain_this_year = 0	
 
-
-
-def view_name(request):
-    now = datetime.datetime.now()
-    today = 'heyy'#now.strftime("%A, %b %d, %Y")
-    return render_to_response(request,'dash.html', {'today' : today.render()})
+    mapbox_access_token = "'pk.eyJ1Ijoic3R1ZGVudG5hdGFzamEiLCJhIjoiY2p4M2IxNDhvMDF2aTQ0cDlpMm13dWVubyJ9.iiGzFV2EbEYh0_KIZAfs-w'"
+	
+	
+    context = {
+        'output' : column2D.render(),
+        'output2' : doughnut3d.render(),
+        'output3' : area2D.render(),
+        #'Rain_this_month': Rain_this_month,
+        #'Rain_this_year': Rain_this_year,
+        'this_year': this_year,
+        'this_month': this_month,
+        'Historic_rain_this_month': Historic_rain_this_month,
+        'Histori_rain_this_year': Histori_rain_this_year,
+        'mapbox_access_token': mapbox_access_token
+    }
+    return  render(request, 'dash.html', context)
+	

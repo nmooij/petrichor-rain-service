@@ -9,5 +9,5 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     url(r'^$', views.Chart, name = 'Chart'),
-    url(r'^$', views.view_name, name = 'view_name'),	
 ]
+

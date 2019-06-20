@@ -1,10 +1,11 @@
 <!-- Filename: app_name/templates/index.html -->
+
 <!DOCTYPE html>
 
 <html>
 
 <head>
-<title>FC-python wrapper</title>
+<title>Petrichor Dashboard</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,15 +16,18 @@
 <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
 <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script> 
 <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fint.js"></script> 
-</head>
 
+
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
 
 <div class="row">
 <div class="col-12">
-<h1>Hello this is the awesome dashboard </h1>
+<h1 class="text-center">Petrichor Rain Service Data Dashboard </h1>
 </div>
 </div>
 
@@ -31,7 +35,8 @@
 <div class="col-3">
 <div class="card text-white bg-primary mb-3">
   <div class="card-body">
-    <p class="card-text"> {{ today|safe }}</p>
+   <p class="card-title"><h6 class="text-center">Total rain fallen this month: </h6></p>
+    <p class="card-text"><h4 class="text-center">{{ Rain_this_month|safe}} mm</h4></p>
   </div>
 </div>
 </div>
@@ -39,7 +44,8 @@
 <div class="col-3">
 <div class="card text-white bg-success mb-3">
   <div class="card-body">
-    <p class="card-text">---</p>
+     <p class="card-title"><h6 class="text-center">Historic rain fallen this month: </h6></p>
+    <p class="card-text"><h4 class="text-center">{{ Historic_rain_this_month|safe}} mm</h4></p>
   </div>
 </div>
 </div>
@@ -47,7 +53,8 @@
 <div class="col-3">
 <div class="card text-white bg-warning mb-3">
   <div class="card-body">
-    <p class="card-text">---</p>
+     <p class="card-title"><h6 class="text-center">Total rain fallen this year: </h6></p>
+    <p class="card-text"><h4 class="text-center">{{ Rain_this_year|safe }} mm</h4></p>
   </div>
 </div>
 </div>
@@ -55,7 +62,8 @@
 <div class="col-3">
 <div class="card text-white bg-info mb-3">
   <div class="card-body">
-    <p class="card-text">---</p>
+     <p class="card-title"><h6 class="text-center">Historic rain fallen this month: </h6></p>
+    <p class="card-text"><h4 class="text-center">{{ Histori_rain_this_year|safe}} mm</h4></p>
   </div>
 </div>
 </div>
@@ -78,6 +86,18 @@
 <div id="area-container">{{ output3|safe }}</div>
 </div>
 <div class="col-6">
+<div id='map' style='width: 600px; height: 400px;'></div>
+  <script>
+    mapboxgl.accessToken = {{ mapbox_access_token|safe }};
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/studentnatasja/cjx4fspk515em1cpj4cdii6l3',
+	center: [6.848301865398478,-1.6961614998103869]
+    });
+	
+    map.addControl(new mapboxgl.NavigationControl());
+  </script>
+
 
 </div>
 </div>
