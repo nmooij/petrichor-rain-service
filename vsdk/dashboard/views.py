@@ -20,7 +20,7 @@ def Chart(request):
     dataSourceBar['chart'] = {
         "caption": "Rainfall",
             "subCaption": "Shown per date",
-            "xAxisName": "Session",
+            "xAxisName": "Month",
             "yAxisName": "Rainfall in MM",
             "theme": "Gammel",
         }
@@ -133,6 +133,9 @@ def Chart(request):
     now = date.today()
     this_month = datetime.now().strftime("%m") #this_month = datetime.now().strftime("%B")
     this_year = datetime.now().strftime("%Y")
+    this_day = datetime.now().strftime("%d")
+	
+	
 	
     # sum = 0
     # input_input_value_with_category_id_2 = dashboard_input.objects.filter(service_service_id=3,category_category_id=2).values('input_input_value')
@@ -211,6 +214,7 @@ def Chart(request):
         #'Rain_this_year': Rain_this_year,
         'this_year': this_year,
         'this_month': this_month,
+		'this_day': this_day,
         'Historic_rain_this_month': Historic_rain_this_month,
         'Histori_rain_this_year': Histori_rain_this_year,
         'mapbox_access_token': mapbox_access_token

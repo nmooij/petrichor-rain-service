@@ -32,13 +32,20 @@
 </div>
 
 <div class="row">
+<div class="col-12">
+<h3 class="text-center">Todays date is: {{this_day|safe}}-{{this_month|safe}}-{{this_year|safe}} </h3>
+</div>
+</div>
+
+
+<div class="row">
 <div class="col-3">
-<div class="card text-white bg-primary mb-3">
+<!-- <div class="card text-white bg-primary mb-3">
   <div class="card-body">
    <p class="card-title"><h6 class="text-center">Total rain fallen this month: </h6></p>
     <p class="card-text"><h4 class="text-center">{{ Rain_this_month|safe}} mm</h4></p>
   </div>
-</div>
+</div> -->
 </div>
 
 <div class="col-3">
@@ -50,23 +57,26 @@
 </div>
 </div>
 
-<div class="col-3">
+<!-- <div class="col-3">
 <div class="card text-white bg-warning mb-3">
   <div class="card-body">
      <p class="card-title"><h6 class="text-center">Total rain fallen this year: </h6></p>
     <p class="card-text"><h4 class="text-center">{{ Rain_this_year|safe }} mm</h4></p>
   </div>
 </div>
-</div>
+</div> -->
 
 <div class="col-3">
 <div class="card text-white bg-info mb-3">
   <div class="card-body">
-     <p class="card-title"><h6 class="text-center">Historic rain fallen this month: </h6></p>
+     <p class="card-title"><h6 class="text-center">Historic rain fallen this year: </h6></p>
     <p class="card-text"><h4 class="text-center">{{ Histori_rain_this_year|safe}} mm</h4></p>
   </div>
 </div>
 </div>
+
+<div class="col-3"></div>
+
 </div>
 
 <div class="row">
@@ -92,7 +102,8 @@
     var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/studentnatasja/cjx4fspk515em1cpj4cdii6l3',
-	center: [6.848301865398478,-1.6961614998103869]
+	center: [6.848301865398478,-1.6961614998103869],
+	zoom: 3
     });
 	
     map.addControl(new mapboxgl.NavigationControl());
