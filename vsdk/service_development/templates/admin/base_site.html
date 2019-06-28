@@ -6,4 +6,27 @@
 <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
 {% endblock %}
 
+{% block extrahead %}
+    <style>
+        body {
+            color: #333;
+            background: #fff;
+        }
+
+        #header {
+            background: #009999;
+            color: #ffc;
+        }
+
+        .module h2, .module caption, .inline-group h2 {
+            background: #00b3b3;
+            color: #fff;
+        }
+
+        div.breadcrumbs {
+            background: #00b3b3;
+        }
+    </style>
+{% endblock %}
+
 {% block nav-global %}{% endblock %}

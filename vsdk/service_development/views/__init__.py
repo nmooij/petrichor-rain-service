@@ -5,4 +5,3 @@ from .user import *
 from .voiceservice import *
 from .language import *
 from .vse_input import *
-from .dashboard_config_view import *

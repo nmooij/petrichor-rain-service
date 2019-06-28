@@ -33,31 +33,3 @@ class dashboard_input(models.Model):
 class Meta:
     managed = False
     db_table = 'View_dashboard_input'
-   
-
-class DashboardConfig(models.Model):
-    COLUMN_CHOICES= [
-    ('farmer_id', 'FarmerID'),
-    ('farmer_first_name', 'First name farmer'),
-    ('farmer_last_name', 'Last name farmer'),
-	('farmer_region', 'Region farmer'),
-    ('farmer_country', 'Country farmer'),
-    ('session_session_id', 'SessionID'),
-    ('session_start', 'Session date'),
-	('input_input_value', 'Input_value'),
-	('category_category_id', 'CategoryID'),
-    ]
-	
-    barchart_sort = models.CharField(max_length=50, choices=COLUMN_CHOICES, default='category_category_id')	
-    barchart_xas = models.CharField(max_length=50, choices=COLUMN_CHOICES, default='session_start')	
-    barchart_yas = models.CharField(max_length=50, choices=COLUMN_CHOICES, default='Input_value')	
-    
-    piechart_sort = models.CharField(max_length=50, choices=COLUMN_CHOICES, default='category_category_id')	
-    piechart_xas = models.CharField(max_length=50, choices=COLUMN_CHOICES, default='farmer_id')	
-    piechart_yas = models.CharField(max_length=50, choices=COLUMN_CHOICES, default='Input_value')	###possible change
-	
-	
-class DashboardConfigForm(ModelForm):
-    class meta:
-        model = DashboardConfig
-        fields = ['barchart_sort','barchart_xas','barchart_yas','piechart_sort','piechart_xas','piechart_yas']
