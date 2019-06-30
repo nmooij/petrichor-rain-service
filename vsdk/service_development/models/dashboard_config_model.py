@@ -25,7 +25,7 @@ class dashboard_input(models.Model):
     session_start = models.DateTimeField(max_length=100)
     category_category_id = models.IntegerField()
     category_category_name = models.CharField(max_length=100)
-    input_input_value = models.CharField(max_length=100)
+    input_input_value = models.IntegerField()
     farmer_city = models.CharField(max_length=100, default='null')
     farmer_longitude = models.CharField(max_length=100, default='null')
     farmer_latitude = models.CharField(max_length=100, default='null')

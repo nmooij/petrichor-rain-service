@@ -11,6 +11,9 @@ import time
 from datetime import date
 from collections import OrderedDict
 
+from django.db.models import Sum
+from django.db.models.functions import TruncMonth
+
 
 
 def Chart(request):
@@ -27,12 +30,13 @@ def Chart(request):
 
     dataSourceBar['data'] = []	
 		
-    objects_with_category_id_2 = dashboard_input.objects.filter(service_service_id=3,category_category_id=2)
+    objects_with_category_id_2 = dashboard_input.objects.filter(service_service_id=3,category_category_id=2).annotate(label=TruncMonth('session_start')).values('label').annotate(value=Sum('input_input_value')).order_by('label')
 
     for obj in objects_with_category_id_2:
-        data =  {'label': obj.session_start.strftime("%m.%Y"),
-                 'value': obj.input_input_value}
+        data = {'label': obj['label'].strftime("%m.%Y"), 
+                'value': obj['value'] }
         dataSourceBar['data'].append(data)	
+
  
 #####Donut#####
     dataSourcePie = {}
@@ -48,7 +52,8 @@ def Chart(request):
         "smartLineAlpha": "50",
         "isSmartLineSlanted": "1",
         "skipOverlapLabels": "1",
-        "theme": "Gammel"
+        "theme": "Gammel",
+        "showLegend": "1",
         }
 
     dataSourcePie['data'] = []	    
@@ -56,7 +61,7 @@ def Chart(request):
     objects_with_category_id_1 = dashboard_input.objects.filter(service_service_id=3,category_category_id=1)
 
     for obj in objects_with_category_id_1:
-        data =  {'label': obj.farmer_id, 
+        data =  {'label': obj.farmer_id,
                  'value': obj.input_input_value}
         dataSourcePie['data'].append(data)	
 
@@ -134,17 +139,7 @@ def Chart(request):
     this_month = datetime.now().strftime("%m") #this_month = datetime.now().strftime("%B")
     this_year = datetime.now().strftime("%Y")
     this_day = datetime.now().strftime("%d")
-	
-	
-	
-    # sum = 0
-    # input_input_value_with_category_id_2 = dashboard_input.objects.filter(service_service_id=3,category_category_id=2).values('input_input_value')
-    # for value in input_input_value_with_category_id_2:
-	    # sum += value
 
-
-    #Rain_this_month = sum
-    #Rain_this_year = 
 	
 	
 ##Historic_rain_this_month 
@@ -210,8 +205,6 @@ def Chart(request):
         'output' : column2D.render(),
         'output2' : doughnut3d.render(),
         'output3' : area2D.render(),
-        #'Rain_this_month': Rain_this_month,
-        #'Rain_this_year': Rain_this_year,
         'this_year': this_year,
         'this_month': this_month,
 		'this_day': this_day,
